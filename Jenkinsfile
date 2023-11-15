@@ -4,7 +4,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh '''
-                cd ../..db
+                cd ../db
                 docker build -t renjubino/task2-dbjen .
                 '''
             }
