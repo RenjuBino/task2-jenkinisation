@@ -1,8 +1,8 @@
 pipeline {
     agent any
-    environment{
+   /* environment{
         YOUR_NAME = credentials("YOUR_NAME")
-    }
+    }*/
     stages {
         stage('Build') {
             steps {
