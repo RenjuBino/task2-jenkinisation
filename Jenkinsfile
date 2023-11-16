@@ -18,7 +18,7 @@ pipeline {
             steps {
                 sh '''
                 docker push renjubino/task2-dbjen
-                docker push renjubino/renjubino/task2-appjenk
+                docker push renjubino/task2-appjenk
                 docker push renjubino/task2-nginx
                 '''
             }
