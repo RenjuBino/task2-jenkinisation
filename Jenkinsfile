@@ -35,10 +35,10 @@ pipeline {
                 docker rm nginx && echo "Removed nginx" || echo "nginx not available"
                 docker stop flask-app && echo "Stopped flask-app" || echo "flask-app not running"
                 docker rm flask-app && echo "Removed flask-app" || echo "flask-app not available"
-                docker stop db && echo "Stopped db" || echo "db not running"
-                docker rm db && echo "Removed db" || echo "db not available"
+                docker stop mysql && echo "Stopped mysql" || echo "mysql not running"
+                docker rm mysql && echo "Removed mysql" || echo "mysql not available"
                 docker run -d --name flask-app --network task1-net  -e MYSQL_ROOT_PASSWORD=Password123 renjubino/task2-appjenk
-                docker run -d --name db --network task1-net -e MYSQL_ROOT_PASSWORD=Password123 renjubino/task2-dbjen
+                docker run -d --name mysql --network task1-net -e MYSQL_ROOT_PASSWORD=Password123 renjubino/task2-dbjen
                 docker run -d --name nginx --network task1-net -p 80:80 renjubino/task2-nginx
                 '''
             }
