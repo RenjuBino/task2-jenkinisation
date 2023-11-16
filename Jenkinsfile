@@ -38,7 +38,7 @@ pipeline {
                 docker stop db && echo "Stopped db" || echo "db not running"
                 docker rm db && echo "Removed db" || echo "db not available"
                 docker run -d --name flask-app --network task1-net  -e MYSQL_ROOT_PASSWORD=Password123 renjubino/task2-appjenk
-                docker run -d --name db --network task1-net -e MYSQL_ROOT_PASSWORD=Password123 renjubino/task2-dbjenk
+                docker run -d --name db --network task1-net -e MYSQL_ROOT_PASSWORD=Password123 renjubino/task2-dbjen
                 docker run -d --name nginx --network task1-net -p 80:80 renjubino/task2-nginx
                 '''
             }
