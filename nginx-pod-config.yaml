@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-t2
+  labels:
+    app: nginx-t2
+spec:
+  volumes:
+  - name: nginx-vol-t2
+    configMap:
+      name: nginx-config-t2
+  containers:
+  - image: nginx:alpine
+    name: nginx-t2
+    volumeMounts:
+    - name: nginx-vol-t2
+      mountPath: /etc/nginx
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-t2
+  labels:
+    app: nginx-service-t2
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    protocol: TCP
+  selector:
+    app: nginx-t2
