@@ -33,7 +33,7 @@ metadata:
   name: mysql
 spec:
   ports:
-  - port: 80
+  - port: 3306
     protocol: TCP
     targetPort: 3306
   selector:
