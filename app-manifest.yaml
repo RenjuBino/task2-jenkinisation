@@ -9,7 +9,7 @@ spec:
     targetPort: 5000
   selector:
     app: flask-app
-  type: ClusterIP
+  type: LoadBalancer
 ---
 apiVersion: v1
 kind: Pod
@@ -23,7 +23,10 @@ spec:
     name: flask-app
     env:
     - name: MYSQL_ROOT_PASSWORD
-      value: Password123
+      valueFrom:
+        secretKeyRef:
+          name: db-root-password
+          key: password
     ports:
     - containerPort: 5000
 ---
@@ -52,6 +55,9 @@ spec:
     name: mysql
     env:
     - name: MYSQL_ROOT_PASSWORD
-      value: Password123
+      valueFrom:
+        secretKeyRef:
+          name: db-root-password
+          key: password
     ports:
     - containerPort: 3306
