@@ -27,6 +27,8 @@ pipeline {
                 sh '''
                 sed -e 's,{{password}},'${MYSQL_ROOT_PASSWORD}',g;' db-password.yaml | kubectl apply -f -
                 kubectl apply -f app-manifest.yaml
+                kubectl apply -f nginx-config.yaml
+                kubectl apply -f nginx-pod-config.yaml
                 sleep 60
                 kubectl get services
                 '''
